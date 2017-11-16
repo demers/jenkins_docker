@@ -1,3 +1,5 @@
+# Inspiré de https://tripdubroot.com/jenkins-docker-in-docker-dind-2040cc90eeab
+
 # Version Jenkins LTS
 FROM jenkins/jenkins:lts
 
@@ -33,5 +35,3 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-co
 
 # Donner les droits d'utiliser Docker à Jenkins
 RUN usermod -aG docker jenkins
-
-USER jenkins
