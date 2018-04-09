@@ -35,3 +35,8 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-co
 
 # Donner les droits d'utiliser Docker à Jenkins
 RUN usermod -aG docker jenkins
+
+ENV TZ=America/Toronto
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
