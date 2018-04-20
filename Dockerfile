@@ -7,13 +7,14 @@ FROM jenkins/jenkins:lts
 USER root
 
 # Mise à jour du système
-RUN apt-get update
+RUN apt-get -y update
 
 # Préalable pour installer Docker
 RUN apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
+    git \
     gnupg2 \
     software-properties-common
 
@@ -36,7 +37,13 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-co
 # Donner les droits d'utiliser Docker à Jenkins
 RUN usermod -aG docker jenkins
 
+RUN apt-get -y update && apt-get install -y locales && locale-gen fr_CA.UTF-8
 ENV TZ=America/Toronto
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+## Clean up when done
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 
