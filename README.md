@@ -7,12 +7,19 @@ Dockerfile inspiré de https://tripdubroot.com/jenkins-docker-in-docker-dind-204
 
 Il faut partir le serveur comme suit:
 
-docker run -itd -u root --name jenkins     -p 8080:8080 -p 50000:50000   -v /var/run/docker.sock:/var/run/docker.sock   -v /root/jenkins:/var/jenkins_home jenkins_docker
+```
+docker build -t jenkins_docker .
+
+```
+docker run -itd -u root --name jenkins -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v /root/jenkins:/var/jenkins_home jenkins_docker
+```
 
 pour avoir la configuration Jenkins dans /root/jenkins
 
 ou
 
-docker run -itd -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v ~/jenkins/jenkins_home:/var/jenkins_home --name jenkins myjenk
+```
+docker run -itd -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v ~/jenkins/jenkins_home:/var/jenkins_home --name jenkins jenkins_docker
+```
 
 pour avoir la configuration Jenkins dans ~/jenkins/jenkins_home
