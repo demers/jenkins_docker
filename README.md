@@ -22,3 +22,8 @@ docker run -itd -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/doc
 ```
 
 pour avoir la configuration Jenkins dans ~/jenkins/jenkins_home
+
+Au démarrage, le serveur Jenkins est accessible à l'adresse
+http://localhost:8080
+
+Il se peut que vous aillez à ajouter le paramètre --net=host au démarrage.
