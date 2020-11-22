@@ -1,4 +1,4 @@
-Dockerfile inspiré de https://tripdubroot.com/jenkins-docker-in-docker-dind-2040cc90eeab
+Dockerfile inspiré de https://tripdubroot.com/jenkins-docker-in-docker-dind-2040cc90eeab (site qui n'existe plus maintenant).
 
 1. Installation de Jenkins LTS
 2. Installation de Docker
