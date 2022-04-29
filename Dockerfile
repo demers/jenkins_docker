@@ -41,6 +41,16 @@ RUN apt-get -y update && apt-get install -y locales && locale-gen fr_CA.UTF-8
 ENV TZ=America/Toronto
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# Variable qui indique où la configuration Jenkins se trouve
+# Cette variable peut être changée par une archive ZIP décomopressée
+# dans un autre dossier.
+ENV JENKINS_HOME /var/jenkins_home
+#ENV JENKINS_HOME /var/jenkins_home_new
+
+# Voici comment intégrer sa propre configuration Jenkins
+#COPY jenkins.zip /tmp
+#RUN mkdir /var/jenkins_home_new && cd /var/jenkins_home_new && unzip -o /tmp/jenkins.zip && rm -f /tmp/jenkins.zip
+
 ## Clean up when done
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
